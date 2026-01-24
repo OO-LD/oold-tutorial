@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "street": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "postalCode": "schema:postalCode"
+  },
+  "$id": "Address.schema.json",
+  "title": "Address",
+  "type": "object",
+  "properties": {
+    "street": {
+      "type": "string",
+      "description": "Street address"
+    },
+    "city": {
+      "type": "string",
+      "description": "City name"
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Postal code"
+    }
+  }
+}

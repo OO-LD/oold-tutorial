@@ -1,0 +1,11 @@
+{
+  "@context": "PersonWithAddress.schema.json",
+  "$schema": "PersonWithAddress.schema.json",
+  "name": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "address": {
+    "street": "123 Main Street",
+    "city": "Springfield",
+    "postalCode": "12345"
+  }
+}

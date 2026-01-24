@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "name": "schema:name"
+  },
+  "$id": "Person.schema.json",
+  "title": "Person",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "First and Last name"
+    }
+  }
+}

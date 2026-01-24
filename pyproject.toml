@@ -1,0 +1,13 @@
+[project]
+name = "oold-tutorial"
+version = "0.1.0"
+description = "Introduction and demo of OO-LD "
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "check-json-schema-meta",
+    "oold>=0.11.4",
+]
+
+[tool.uv.sources]
+check-json-schema-meta = { git = "https://github.com/thiagowfx/check-json-schema-meta" }

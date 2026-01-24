@@ -1,0 +1,5 @@
+{
+  "@context": "Person.schema.json",
+  "$schema": "Person.schema.json",
+  "name": "John Doe"
+}
