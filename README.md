@@ -23,6 +23,10 @@ Notice how the same file contains both:
 - JSON Schema structure (`type`, `properties`, `description`)
 - JSON-LD semantics (`@context` mapping `name` to `schema:name`)
 
+> [!NOTE]
+> Both `$schema` and `@context` in an instance document can point to the same OO-LD schema file, enabling JSON Schema validation and JSON-LD processing without any additional transformation. 
+> See the OO-LD spec's [Schema Instances](https://github.com/OO-LD/schema#schema-instances) section, and the [`$schema` keyword](https://json-schema.org/understanding-json-schema/reference/schema#schema) and [`@context` keyword](https://www.w3.org/TR/2020/REC-json-ld11-20200716/#the-context) docs for details.
+
 ## Try It Yourself
 
 ### Prerequisites
@@ -40,7 +44,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ### Setup
 
 ```bash
-git submodule add https://github.com/OO-LD/oold-tutorial
+git clone https://github.com/OO-LD/oold-tutorial
 cd oold-tutorial
 uv sync
 cd examples
@@ -50,7 +54,7 @@ cd examples
 
 ```bash
 # Validate the basic example
-uv run check-json-schema-meta examples/john-doe.json
+uv run check-json-schema-meta john-doe.json
 ```
 
 Output:
@@ -60,8 +64,10 @@ Output:
 
 ```bash
 # Validate the composition example
-uv run check-json-schema-meta examples/jane-smith.json
+uv run check-json-schema-meta jane-smith.json
 ```
+> [!IMPORTANT]
+> Schema references are resolved relative to the current working directory. Run these commands from `examples/`.
 
 Output:
 ```
@@ -72,7 +78,7 @@ Output:
 
 ```bash
 # Generate RDF from basic example
-uv run rdfpipe examples/john-doe.json
+uv run rdfpipe john-doe.json
 ```
 
 Output (Turtle format):
@@ -84,7 +90,7 @@ Output (Turtle format):
 
 ```bash
 # Generate RDF from composition example
-uv run rdfpipe examples/jane-smith.json
+uv run rdfpipe jane-smith.json
 ```
 
 Output (Turtle format):
@@ -111,6 +117,9 @@ Try code generation in the [Python Playground](https://oo-ld.github.io/playgroun
 - Paste your OO-LD schema
 - See generated Pydantic dataclasses with embedded `@context`
 - Test round-trip conversion between schemas and Python code
+
+> [!WARNING]
+> The Python Playground cannot resolve external file references. Pasting `PersonWithAddress.schema.json` will fail because `Address.schema.json` is not available remotely — use `Person.schema.json` instead.
 
 ## Key Concepts Demonstrated
 
@@ -156,3 +165,5 @@ When you validate `jane-smith.json`:
 - JSON Schema validates the nested address structure
 - JSON-LD generates proper RDF with `schema:address` and nested address properties
 
+> [!NOTE]
+> `PersonWithAddress.schema.json` references `Address.schema.json` twice because JSON Schema (`$ref`) and JSON-LD (`@context`) are separate processing mechanisms with no shared reference syntax — both are required for the schema to work correctly in both contexts. See [Composition](https://github.com/OO-LD/schema#composition) in the OO-LD spec for the reflection rule.
