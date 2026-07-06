@@ -25,7 +25,7 @@ Notice how the same file contains both:
 
 > [!NOTE]
 > Both `$schema` and `@context` in an instance document can point to the same OO-LD schema file, enabling JSON Schema validation and JSON-LD processing without any additional transformation. 
-> See the OO-LD spec's [Schema Instances](https://github.com/OO-LD/schema#schema-instances) section, and the [`$schema` keyword](https://json-schema.org/understanding-json-schema/reference/schema#schema) and [`@context` keyword](https://www.w3.org/TR/2020/REC-json-ld11-20200716/#the-context) docs for details.
+> See the OO-LD spec's [Schema Instances](https://oo-ld.github.io/oold-schema/latest/spec/#schema-instances) section, and the [`$schema` keyword](https://json-schema.org/understanding-json-schema/reference/schema#schema) and [`@context` keyword](https://www.w3.org/TR/2020/REC-json-ld11-20200716/#the-context) docs for details.
 
 ## Try It Yourself
 
@@ -166,4 +166,4 @@ When you validate `jane-smith.json`:
 - JSON-LD generates proper RDF with `schema:address` and nested address properties
 
 > [!NOTE]
-> `PersonWithAddress.schema.json` references `Address.schema.json` twice because JSON Schema (`$ref`) and JSON-LD (`@context`) are separate processing mechanisms with no shared reference syntax — both are required for the schema to work correctly in both contexts. See [Composition](https://github.com/OO-LD/schema#composition) in the OO-LD spec for the reflection rule.
+> `PersonWithAddress.schema.json` references `Address.schema.json` twice because JSON Schema (`$ref`) and JSON-LD (`@context`) are separate processing mechanisms with no shared reference syntax — both are required for the schema to work correctly in both contexts. See [Composition](https://oo-ld.github.io/oold-schema/latest/spec/#composition) in the OO-LD spec for the reflection rule.
